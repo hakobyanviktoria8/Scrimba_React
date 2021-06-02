@@ -4,6 +4,7 @@ import InfoCallout from "./InfoFancyBorder";
 import ShowHide from "./ShowHide";
 import Favorite from "./Favorite";
 import Color from "./Color";
+import Loading from "./Loading";
 
 const Reusability = (props) => {
     return (
@@ -36,6 +37,11 @@ const Reusability = (props) => {
 
             <hr/>
             <Color/>
+
+            <hr/>
+            <Loading/>
+
+
         </div>
     )
 };
