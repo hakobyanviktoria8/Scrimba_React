@@ -6,7 +6,7 @@ import ThemeContext from "./themeContext";
 export function Context(props) {
     return (
         <div>
-            <ThemeContext.Provider value={"light"}>
+            <ThemeContext.Provider value={"dark"}>
                 <ContextProvider/>
             </ThemeContext.Provider>
         </div>
