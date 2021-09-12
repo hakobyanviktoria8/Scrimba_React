@@ -8,14 +8,14 @@ import './App.css';
 // import {Context} from "./Context/Context";
 // import ContextProviderConsumer from "./ContextProviderConsumer";
 // import UserContextProvider from "./UserContext";
-import ReactRouter from "./ReactRouter";
-
+// import ReactRouter from "./ReactRouter";
+import ReactContext from "./ReactContext/ReactContext";
+import ThemeContext from "./ReactContext/themeContext";
 
 function App() {
     return (
         <div className="App">
             {/*<Intro/>*/}
-            <ReactRouter/>
             {/*<Reusability/>*/}
             {/*<Performance/>*/}
             {/*<Context/>*/}
@@ -23,6 +23,14 @@ function App() {
             {/*<UserContextProvider/>*/}
             {/*<UserContext2Provider/>*/}
             {/*<ReduxComp/>*/}
+
+            {/*13/09/21*/}
+            {/*<ReactRouter/>*/}
+
+            <ThemeContext.Provider value={"light"}>
+                <ReactContext/>
+            </ThemeContext.Provider>
+
         </div>
     );
 }
