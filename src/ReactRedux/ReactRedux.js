@@ -2,7 +2,10 @@ import React from "react";
 // import index from "./index";
 // import index1 from "./index1";
 // import index2 from "./index2";
-import dinamikChangeState from "./dinamikChangeState";
+// import dinamikChangeState from "./dinamikChangeState";
+import moreGlobalState from "./moreGlobalVarible";
+
+
 
 const ReactRedux = () => {
     return (
