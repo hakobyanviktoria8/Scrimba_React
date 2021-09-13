@@ -11,6 +11,7 @@ import './App.css';
 // import ReactRouter from "./ReactRouter";
 import ReactContext from "./ReactContext/ReactContext";
 import ThemeContext from "./ReactContext/themeContext";
+import ReactRedux from "./ReactRedux/ReactRedux";
 
 function App() {
     return (
@@ -27,9 +28,11 @@ function App() {
             {/*13/09/21*/}
             {/*<ReactRouter/>*/}
 
-            <ThemeContext.Provider value={"light"}>
-                <ReactContext/>
-            </ThemeContext.Provider>
+            {/*<ThemeContext.Provider value={"light"}>*/}
+            {/*    <ReactContext/>*/}
+            {/*</ThemeContext.Provider>*/}
+
+            <ReactRedux/>
 
         </div>
     );
