@@ -9,8 +9,8 @@ import './App.css';
 // import ContextProviderConsumer from "./ContextProviderConsumer";
 // import UserContextProvider from "./UserContext";
 // import ReactRouter from "./ReactRouter";
-import ReactContext from "./ReactContext/ReactContext";
-import ThemeContext from "./ReactContext/themeContext";
+// import ReactContext from "./ReactContext/ReactContext";
+// import ThemeContext from "./ReactContext/themeContext";
 import ReactRedux from "./ReactRedux/ReactRedux";
 
 function App() {

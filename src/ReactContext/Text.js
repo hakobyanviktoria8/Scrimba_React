@@ -5,7 +5,7 @@ const Text = () => {
     return (
         <ThemeContext.Consumer>
             {theme=>(
-                <h1>{theme} text</h1>
+                <h1>{theme} text{}</h1>
             )}
         </ThemeContext.Consumer>
     )

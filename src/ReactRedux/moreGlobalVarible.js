@@ -1,13 +1,33 @@
 //moreGlobalVarible
-
 const redux = require("redux");
 
 const inotialState = {
     count: 0,
-    sum: 1,
+    sum: {
+        one: 0,
+        two: 1
+    },
     mul: 1,
-    favorite: []
+    favorite: [],
+    youtubeVideo: {
+        title: "",
+        viewCount: 0
+    }
 }
+
+function sumFunc(num) {
+    return {
+        type: "SUM",
+        payload: num
+    }
+}
+
+// function setYouTubeTitle(title) {
+//     return {
+//         type: "SET_YOUTUBE_TITLE",
+//         payload: title
+//     }
+// }
 
 function addFavorite(thing) {
     return {
@@ -33,6 +53,22 @@ function reducer(state = inotialState, action) {
             return {
                 favorite: state.favorite.filter(x => x !== action.payload)
             }
+        // case "SET_YOUTUBE_TITLE":
+        //     return {
+        //         ...state,
+        //         youtubeVideo: {
+        //             title: action.payload,
+        //             viewCount: state.youtubeVideo.viewCount + 1
+        //         }
+        //     }
+        case "SUM":
+            return {
+                ...state,
+                sum: {
+                    one: action.payload,
+                    two: action.payload + 1
+                }
+            }
         default:
             return state
     }
@@ -49,6 +85,22 @@ store.subscribe(() => {
 store.dispatch(addFavorite("lala1"))
 store.dispatch(addFavorite("lala2"))
 store.dispatch(removeFavorite("lala1"))
+
+store.dispatch(sumFunc(11))
+
+
+
+
+
+
+
+
+
+
+
+
+// store.dispatch(setYouTubeTitle("New life, new opportunities"))
+// store.dispatch(setYouTubeTitle("Learn Redux"))
 
 //const redux = require("redux")
 //
