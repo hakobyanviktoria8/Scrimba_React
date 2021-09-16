@@ -1,13 +1,13 @@
 import redux, {createStore} from "redux"
 
-function increment() {
+export function increment() {
     return {
         type: "increment",
     }
 }
 
 //decrement
-function decrement() {
+export function decrement() {
     return {
         type: "decrement",
     }

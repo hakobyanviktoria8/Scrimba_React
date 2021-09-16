@@ -10,18 +10,27 @@ import reduxinreact from "./reduxInReact"
 // import {connect} from "react-redux"
 
 
-const ReactRedux = () => {
+const ReactRedux = ({count}) => {
     return (
         <div>
+            <hr/>
             <h1>React Redux Successful understand</h1>
-            <button>+</button>
-            <button>-</button>
+            <p>{count}</p>
+
         </div>
     )
 };
 
-export default ReactRedux
+// function mapStateToProps(globalstate) {
+//     return {
+//         count: globalstate
+//     }
+// }
+//
+// export default connect(mapStateToProps, {})(ReactRedux)
 
+export default ReactRedux
+//
 
 
 //use Provider in react-redux
