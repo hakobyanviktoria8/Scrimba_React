@@ -11,17 +11,17 @@ import './App.css';
 // import ReactRouter from "./ReactRouter";
 // import ReactContext from "./ReactContext/ReactContext";
 // import ThemeContext from "./ReactContext/themeContext";
-import ReactRedux from "./ReactRedux/ReactRedux";
-import {increment, decrement} from "./ReactRedux/reduxInReact";
+// import ReactRedux from "./ReactRedux/ReactRedux";
+// import {increment, decrement} from "./ReactRedux/reduxInReact";
 
 //2way to give state and action, with HOOKs
 import {useSelector, useDispatch} from "react-redux"
+import ReactHook from "./ReactHOOK";
 
 function App(props) {
     const count = useSelector(state => state)
-    const favorite = useSelector(state => state)
+    // const favorite = useSelector(state => state)
     const dispatch = useDispatch();
-    console.log("useSelector",useSelector);
     return (
         <div className="App">
             {/*<Intro/>*/}
@@ -41,12 +41,13 @@ function App(props) {
             {/*</ThemeContext.Provider>*/}
 
 
-            <h1>{count}</h1>
-            <button onClick={()=>dispatch(increment())}>+</button>
-            <button onClick={()=>dispatch(decrement())}>-</button>
+            {/*<h1>{count}</h1>*/}
+            {/*<button onClick={()=>dispatch(increment())}>+</button>*/}
+            {/*<button onClick={()=>dispatch(decrement())}>-</button>*/}
 
-            <ReactRedux count = {count} />
+            {/*<ReactRedux count = {count} />*/}
 
+            <ReactHook/>
         </div>
     );
 }

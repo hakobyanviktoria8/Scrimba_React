@@ -1,36 +1,73 @@
-import redux, {createStore} from "redux"
+import redux, {createStore, applyMiddleware} from "redux"
+import thunk from "redux-thunk"
 
 export function increment() {
-    return {
-        type: "increment",
+    return (dispatch, getState) => {
+        const number = getState()
+        const baseUrl = "https://swapi.co/api/people"
+        fetch(`${baseUrl}/${number}`)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                dispatch({
+                    type: "INCREMENT",
+                    payload: res
+                })
+            })
     }
 }
 
-//decrement
 export function decrement() {
     return {
-        type: "decrement",
+        type: "DECREMENT"
     }
 }
 
-function reducer(count = 0, action) {
-    switch (action.type) {
-        case "increment":
+function reducer(count = 1, action) {
+    switch(action.type) {
+        case "INCREMENT":
             return count + 1
-        case "decrement":
+        case "DECREMENT":
             return count - 1
         default:
             return count
     }
 }
 
-const store = createStore(reducer);
-
-store.subscribe(()=>{
-    console.log(store.getState());
-})
-
+const store = createStore(reducer, applyMiddleware(thunk))
+store.subscribe(() => console.log(store.getState()))
 export default store
-// store.dispatch(increment(22))
-// store.dispatch(decrement(2))
+
+//increment old vertion without redux-thunk
+// export function increment() {
+//     return {
+//         type: "increment",
+//     }
+// }
+
+// //decrement
+// export function decrement() {
+//     return {
+//         type: "decrement",
+//     }
+// }
+//
+// function reducer(count = 0, action) {
+//     switch (action.type) {
+//         case "increment":
+//             return count + 1
+//         case "decrement":
+//             return count - 1
+//         default:
+//             return count
+//     }
+// }
+//
+// const store = createStore(reducer, applyMiddleware(thunk));
+//
+// store.subscribe(() => {
+//     console.log(store.getState());
+// })
+//
+// export default store
 
