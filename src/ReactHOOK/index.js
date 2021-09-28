@@ -1,6 +1,7 @@
 import React from "react";
 import One from "./index1";
 import UseState3 from "./index2";
+import UseEfectComp from "./UseEfectComp";
 
 const ReactHook = () => {
     return (
@@ -8,8 +9,10 @@ const ReactHook = () => {
             <h1>Heact HOOK</h1>
             <hr/>
             <One/>
-            {/*<UseState3/>*/}
-
+            <hr/>
+            <UseState3/>
+            <hr/>
+            <UseEfectComp/>
         </div>
     )
 };
