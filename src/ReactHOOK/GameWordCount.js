@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import "./GameWordCount.css"
 
 const GameWordCount = () => {
     const [bool, setbool] = useState(false)
@@ -10,16 +11,16 @@ const GameWordCount = () => {
         setText(e.target.value)
     }
 
-    useEffect(() => {
+    const handleClick = () => {
         const interval = setInterval(() => {
             setDedline(dl => dl - 1)
         }, 1000)
 
         setintervalID(interval)
-    }, [])
+    }
 
     useEffect(() => {
-        console.log("dedline = ",dedline)
+        console.log("dedline = ", dedline)
         if (dedline < 1) {
             clearInterval(intervalID)
             setbool(true)
@@ -27,13 +28,13 @@ const GameWordCount = () => {
     }, [dedline])
 
     return (
-        <div>
+        <div className="GameWordCount">
             <h1>How fast do you type?</h1>
             <textarea disabled={bool} value={text} onChange={handleChangeText} name="" id="" cols="30" rows="10"/>
             <h4>Time remaining: {dedline}</h4>
             <hr/>
+            <button onClick={handleClick}>PLAY</button>
             <p>Word count: {text === "" ? 0 : text.trim().split(" ").length}</p>
-
         </div>
     )
 };
