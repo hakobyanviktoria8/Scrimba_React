@@ -1,42 +1,57 @@
-import React, {useEffect, useState} from "react";
-import "./GameWordCount.css"
+import React, {useState, useEffect, useRef} from "react"
+import "./GameWordCount.css";
 
-const GameWordCount = () => {
-    const [bool, setbool] = useState(false)
+function App() {
+    const STARTING_TIME = 5
+    const refer= useRef(null)
     const [text, setText] = useState("")
-    const [dedline, setDedline] = useState(15)
-    const [intervalID, setintervalID] = useState(0)
+    const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME)
+    const [isTimeRunning, setIsTimeRunning] = useState(false)
+    const [wordCount, setWordCount] = useState(0)
 
-    const handleChangeText = (e) => {
-        setText(e.target.value)
+    function handleChange(e) {
+        const {value} = e.target
+        setText(value)
     }
 
-    const handleClick = () => {
-        const interval = setInterval(() => {
-            setDedline(dl => dl - 1)
-        }, 1000)
+    function calculateWordCount(text) {
+        const wordsArr = text.trim().split(" ")
+        return wordsArr.filter(word => word !== "").length
+    }
 
-        setintervalID(interval)
+    function startGame() {
+        setIsTimeRunning(true)
+        setTimeRemaining(5)
+        setText("")
+        refer.current.disabled = false
+        refer.current.focus()
     }
 
     useEffect(() => {
-        console.log("dedline = ", dedline)
-        if (dedline < 1) {
-            clearInterval(intervalID)
-            setbool(true)
+        if(isTimeRunning && timeRemaining > 0) {
+            setTimeout(() => {
+                setTimeRemaining(time => time - 1)
+            }, 1000)
+        } else if(timeRemaining === 0) {
+            setIsTimeRunning(false)
+            setWordCount(calculateWordCount(text))
         }
-    }, [dedline])
+    }, [timeRemaining, isTimeRunning])
 
     return (
         <div className="GameWordCount">
             <h1>How fast do you type?</h1>
-            <textarea disabled={bool} value={text} onChange={handleChangeText} name="" id="" cols="30" rows="10"/>
-            <h4>Time remaining: {dedline}</h4>
-            <hr/>
-            <button onClick={handleClick}>PLAY</button>
-            <p>Word count: {text === "" ? 0 : text.trim().split(" ").length}</p>
+            <textarea
+                disabled={!isTimeRunning}
+                onChange={handleChange}
+                value={text}
+                ref={refer}
+            />
+            <h4>Time remaining: {timeRemaining}</h4>
+            <button onClick={startGame} disabled={isTimeRunning}>Start</button>
+            <h1>Word count: {wordCount}</h1>
         </div>
     )
-};
+}
 
-export default GameWordCount
+export default App

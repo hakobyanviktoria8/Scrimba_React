@@ -3,6 +3,7 @@ import One from "./index1";
 import UseState3 from "./index2";
 import UseEfectComp from "./UseEfectComp";
 import GameWordCount from "./GameWordCount";
+import RefHook from "./RefHook";
 
 const ReactHook = () => {
     return (
@@ -15,6 +16,7 @@ const ReactHook = () => {
             {/*<hr/>*/}
             {/*<UseEfectComp/>*/}
             <GameWordCount/>
+            <RefHook/>
         </div>
     )
 };
